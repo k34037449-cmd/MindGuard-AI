@@ -1,0 +1,1 @@
+.env\n.env.*\n!.env.example\n**/.env\n**/venv/\n**/__pycache__/\n**/*.py[cod]\n**/*.db\n**/node_modules/\n**/dist/\n

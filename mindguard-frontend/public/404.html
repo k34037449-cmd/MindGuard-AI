@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title>MindGuard AI</title>
   <script>
-    sessionStorage.redirect = location.pathname + location.search + location.hash;
+    // Preserve a deep link and return to the Render root-domain SPA entry.
+    sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+    location.replace('/');
   </script>
-  <meta http-equiv="refresh" content="0;URL='/mindguard/'">
 </head>
-<body></body>
+<body>
+  <p>Opening MindGuard AI…</p>
+</body>
 </html>

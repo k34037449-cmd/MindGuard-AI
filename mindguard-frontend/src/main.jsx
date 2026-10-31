@@ -10,7 +10,9 @@ function RedirectHandler({ children }) {
     const redirect = sessionStorage.getItem('redirect')
     if (redirect) {
       sessionStorage.removeItem('redirect')
-      navigate(redirect.replace('/mindguard', '') || '/', { replace: true })
+      // Older GitHub Pages links may still contain the former /mindguard prefix.
+      const target = redirect.replace(/^\/mindguard(?=\/|$)/, '') || '/'
+      navigate(target, { replace: true })
     }
   }, [navigate])
   return children
@@ -18,7 +20,8 @@ function RedirectHandler({ children }) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter> 
+    {/* Render serves this app at the domain root, not /mindguard. */}
+    <BrowserRouter>
       <RedirectHandler>
         <App />
       </RedirectHandler>

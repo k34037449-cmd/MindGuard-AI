@@ -1,4 +1,6 @@
-const BASE = import.meta.env.VITE_API_URL || "/api";
+// Render provides https://<backend>.onrender.com/api.
+// Strip a trailing slash so endpoints are joined exactly once.
+const BASE = (import.meta.env.VITE_API_URL || "/api").replace(/\/+$/, "");
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem("token");
